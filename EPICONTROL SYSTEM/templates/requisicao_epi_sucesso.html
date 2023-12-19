@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='requisicao_epi_sucesso.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição de EPI - Sucesso</title>
+</head>
+<body>
+    <h1>Requisição de EPI - Sucesso</h1>
+    <p>A requisição de EPI foi realizada com sucesso para o funcionário de matrícula {{ matricula }}!</p>
+    <p>Detalhes da Requisição:</p>
+    <ul>
+        <li>EPI: {{ epi }}</li>
+        <li>Quantidade: {{ quantidade }}</li>
+        {% if epi == 'botas' %}
+            {% if tamanho %}
+                <li>Tamanho: {{ tamanho }}</li>
+            {% else %}
+                <li>Tamanho: não especificado</li>
+            {% endif %}
+        {% endif %}
+    </ul>
+    <p><a href="/">Voltar à Página Inicial</a></p>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

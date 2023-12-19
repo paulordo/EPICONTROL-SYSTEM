@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Funcionários</title>
+    <a href="{{ url_for('index') }}"><button type="button">Voltar ao Menu Principal</button></a>
+    <link rel="stylesheet" href="{{ url_for('static', filename='exibir_funcionarios.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Funcionários</h1>
+        <ul>
+            {% for funcionario in funcionarios %}
+                <li>
+                    <strong>Matrícula:</strong> {{ funcionario['Matrícula'] }},
+                    <strong>Nome:</strong> {{ funcionario['Nome'] }},
+                    <strong>Setor:</strong> {{ funcionario['Setor'] }},
+                    <strong>Turno:</strong> {{ funcionario['Turno'] }}
+                    {% if 'Histórico' in funcionario %}
+                        <ul>
+                            {% for historico in funcionario['Histórico'] %}
+                                <li>
+                                    <strong>EPI:</strong> {{ historico['EPI'] }},
+                                    <strong>Quantidade:</strong> {{ historico['Quantidade'] }},
+                                    <strong>Data:</strong> {{ historico['Data'] }},
+                                    <strong>Tamanho:</strong> {{ historico['Tamanho'] }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <p><a href="/">Voltar à Página Inicial</a></p>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

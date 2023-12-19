@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Requisição de EPI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Sistema de Requisição de EPI</h1>
+    <div id="menu">
+        <h2>Menu Principal</h2>
+        <button onclick="openCadastrarFuncionarioPage()">Cadastrar Funcionário</button>
+        <button id="exibir_funcionarios">Exibir Funcionários</button>
+        <button onclick="openRequisitarEPIPage()">Requisitar EPI</button>
+    </div>
+    <div id="content"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Função para abrir a página de cadastrar funcionário
+        function openCadastrarFuncionarioPage() {
+            window.location.href = "/cadastrar-funcionario";
+        }
+
+        // Função para abrir a página de requisitar EPI
+        function openRequisitarEPIPage() {
+            window.location.href = "/requisitar_epi.html";
+        }
+    </script>
+</body>
+</html>

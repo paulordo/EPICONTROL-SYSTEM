@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='funcionario_nao_encontrado.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionário Não Encontrado</title>
+</head>
+<body>
+    <h1>Funcionário Não Encontrado</h1>
+    <p>Matrícula: {{ matricula }}</p>
+    <p>O funcionário com a matrícula fornecida não foi encontrado.</p>
+
+    <a href="{{ url_for('index') }}">Voltar ao Menu Principal</a>
+</body>
+</html>

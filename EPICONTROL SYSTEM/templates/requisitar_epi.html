@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisitar EPI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='requisitar_epi.css') }}">
+</head>
+<body>
+    <h1>Requisitar EPI</h1>
+    <form method="POST" action="/requisitar_epi.html">
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" required>
+        <br>
+        <label for="epi">EPI:</label>
+        <select id="epi" name="epi" required>
+            <option value="luvas">Luvas</option>
+            <option value="botas">Botas</option>
+            <option value="oculos">Óculos</option>
+            <option value="fones">Fones</option>
+        </select>
+        <br>
+        <div id="quantidade-container">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required>
+        </div>
+        <div id="tamanho-container" style="display: none;">
+            <label for="tamanho">Tamanho:</label>
+            <input type="text" id="tamanho" name="tamanho">
+        </div>
+        <div id="dropdown-tamanho-container" style="display: none;">
+            <label for="dropdown-tamanho">Tamanho:</label>
+            <select id="dropdown-tamanho" name="dropdown-tamanho">
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit">Requisitar</button>
+    </form>
+    <p><a href="/">Voltar à Página Inicial</a></p>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.getElementById('epi').addEventListener('change', function () {
+            var selectedEPI = this.value;
+            var quantidadeContainer = document.getElementById('quantidade-container');
+            var tamanhoContainer = document.getElementById('tamanho-container');
+            var dropdownTamanhoContainer = document.getElementById('dropdown-tamanho-container');
+
+            if (selectedEPI === 'botas') {
+                quantidadeContainer.style.display = 'block';
+                tamanhoContainer.style.display = 'none';
+                dropdownTamanhoContainer.style.display = 'block';
+            } else {
+                quantidadeContainer.style.display = 'block';
+                tamanhoContainer.style.display = 'none';
+                dropdownTamanhoContainer.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
