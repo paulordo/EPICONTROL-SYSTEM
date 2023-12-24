@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cadastro_sucesso.css') }}">
+    <title>Cadastrado com Sucesso</title>
+</head>
+
+<body>
+    <h1>Tudo certo até aqui!</h1>
+    <p>Funcionário {{ ultima_matricula }} - {{ ultimo_nome }} cadastrado com sucesso!</p>
+    <a href="{{ url_for('index') }}"><button type="button">Voltar ao Menu Principal</button></a>
+</body>
+
+</html>
