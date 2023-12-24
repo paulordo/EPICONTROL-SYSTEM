@@ -11,6 +11,7 @@
 <body>
     <div class="container">
         <h1>Lista de Funcionários</h1>
+        <a href="{{ url_for('index') }}" class="botao_voltar"><button type="button">Voltar ao Menu Principal</button></a>
         <ul>
             {% for funcionario in funcionarios %}
                 <li>
@@ -24,20 +25,25 @@
                                 <li>
                                     <strong>EPI:</strong> {{ historico['EPI'] }},
                                     <strong>Quantidade:</strong> {{ historico['Quantidade'] }},
-                                    <strong>Data:</strong> {{ historico['Data'] }},
-                                    <strong>Tamanho:</strong> {{ historico['Tamanho'] }}
+                                    <strong>Data:</strong> {{ historico['Data'] }}
+                                    {% if historico['EPI'] == 'Botas' %}
+                                        <strong>Tamanho:</strong> {{ historico['Tamanho'] }}
+                                    {% endif %}
+                                    <!-- Botão de exclusão de histórico para cada item do histórico -->
+                                    <a href="{{ url_for('excluir_historico', matricula=funcionario['Matrícula'], epi=historico['EPI'], data=historico['Data']) }}">
+                                        <button type="button" class="botao-excluir">Excluir EPI</button>
+                                    </a>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% endif %}
                     <!-- Botão de exclusão para cada funcionário -->
                     <a href="{{ url_for('excluir_funcionario', matricula=funcionario['Matrícula']) }}">
-                        <button type="button" class="botao-excluir">Excluir</button>
+                        <button type="button" class="botao-excluir">Excluir Funcionário</button>
                     </a>
                 </li>
             {% endfor %}
         </ul>
-        <p><a href="/">Voltar à Página Inicial</a></p>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

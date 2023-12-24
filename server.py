@@ -39,13 +39,33 @@ def requisitar_epi_page():
             return render_template('funcionario_nao_encontrado.html', matricula=matricula)
 
         # Use o valor correto dependendo do tipo de EPI selecionado
-        tamanho_selecionado = dropdown_tamanho if epi == 'botas' else tamanho
+        tamanho_selecionado = dropdown_tamanho if epi == 'Botas' else tamanho
 
         requisitar_epi_individual(matricula, epi, quantidade, tamanho_selecionado)
 
         return render_template('requisicao_epi_sucesso.html', matricula=matricula, epi=epi, quantidade=quantidade, tamanho=tamanho_selecionado)
 
     return render_template('requisitar_epi.html')
+
+@app.route('/excluir-historico/<matricula>/<epi>/<data>')
+def excluir_historico(matricula, epi, data):
+    global funcionarios, requisicoes_epi
+
+    funcionario = next((f for f in funcionarios if f['Matrícula'] == matricula), None)
+
+    if not funcionario:
+        return f"Funcionário com matrícula {matricula} não encontrado."
+
+    if 'Histórico' in funcionario:
+        # Filtra o histórico para manter apenas os itens que não correspondem ao EPI e à data fornecidos
+        funcionario['Histórico'] = [h for h in funcionario['Histórico'] if not (h['EPI'] == epi and h['Data'] == data)]
+
+        # Atualiza as requisições_epi para refletir a alteração no histórico
+        if matricula in requisicoes_epi and epi in requisicoes_epi[matricula]:
+            requisicoes_epi[matricula][epi]['Data'] = [d for d in requisicoes_epi[matricula][epi]['Data'] if d['Data'] != data]
+
+    return redirect(url_for('exibir_funcionarios_page'))
+
 
 @app.route('/')
 def home():
@@ -172,32 +192,6 @@ def exibir_funcionarios():
                         print(f"      Data: {requisicao['Data']}, Quantidade: {requisicao['Quantidade']}")
 
     print()
-
-# Função para mostrar o menu de EPIs
-def menu_epi(matricula):
-    while True:
-        print("\n---------- Menu de EPIs ----------")
-        print("1 - Botas")
-        print("2 - Luvas")
-        print("3 - Óculos")
-        print("4 - Fones")
-        print("5 - Voltar ao Menu Principal")
-
-        opcao_epi = input("Escolha uma opção\n>> ")
-
-        if opcao_epi == "1":
-            requisitar_epi_individual(matricula, "Botas")
-        elif opcao_epi == "2":
-            requisitar_epi_individual(matricula, "Luvas")
-        elif opcao_epi == "3":
-            requisitar_epi_individual(matricula, "Óculos")
-        elif opcao_epi == "4":
-            requisitar_epi_individual(matricula, "Fones")
-        elif opcao_epi == "5":
-            print("Voltando ao Menu Principal.")
-            break
-        else:
-            print("Opção inválida. Tente novamente.")
 
 if __name__ == "__main__":
     povoar_funcionarios()  # Adiciona automaticamente funcionários à lista

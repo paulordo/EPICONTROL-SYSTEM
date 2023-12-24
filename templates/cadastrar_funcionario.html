@@ -23,70 +23,57 @@
 </head>
 
 <body>
-    <h1>Cadastrar Funcionário</h1>
-    <a href="{{ url_for('index') }}" class="botao_voltar"><button type="button">Voltar ao Menu Principal</button></a>
+    <h1>
+        Cadastrar Funcionário
+    </h1>
+    <a href="{{ url_for('index') }}" class="botao_voltar">
+        <button type="button">
+            <span>Voltar ao Menu Principal</span>
+        </button>
+    </a>
     <ul>
         {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
+        <p class="error_message" style="color: red;">{{ error_message }}</p>
         {% endif %}
     </ul>
-<div 
-class="form-container">
-    <form 
-    method="POST" 
-    action="/cadastrar-funcionario">
-        <!--Caixa de texto MATRICULA do funcionário-->
-        <input 
-        type="text"
-        placeholder="Matricula"
-        id="matricula" 
-        name="matricula" 
-        pattern="[0-9]+" 
-        title="Digite apenas números" 
-        required><br>
-        <!--Caixa de texto NOME do funcionário-->
-        <input 
-        type="text" 
-        placeholder="Nome" 
-        id="nome" 
-        name="nome" 
-        required><br>
-        <!--Caixa de seleção SETOR do funcionário-->
-        <select 
-        id="setor" 
-        name="setor" 
-        required>
-            <option value="" disabled selected>Selecione o setor</option>
-            <option value="Setor 0">Setor 0</option>
-            <option value="Setor 1">Setor 1</option>
-            <option value="Setor 2">Setor 2</option>
-            <option value="Setor 3">Setor 3</option>
-            <option value="Setor 4">Setor 4</option>
-        </select><br>
-        <!--Caixa de seleção TURNO do funcionário-->
-        <select 
-        id="turno" 
-        aria-placeholder="Selecione o turno"
-        name="turno" 
-        required>
-            <option value="" disabled selected>Selecione o turno</option>
-            <option value="Manhã">Manhã</option>
-            <option value="Tarde">Tarde</option>
-            <option value="Noite">Noite</option>
-        </select><br>
-        <!--botão cadastrar funcionário-->
-        <input 
-        type="submit" 
-        value="Cadastrar">
-    </form>
-</div>
+    <div class="form-container">
+        <form method="POST" action="/cadastrar-funcionario">
+            <!--Caixa de texto MATRICULA do funcionário-->
+            <input type="text" placeholder="Matricula" id="matricula" name="matricula" pattern="[0-9]+"
+                title="Digite apenas números" required><br>
+            <!--Caixa de texto NOME do funcionário-->
+            <input type="text" placeholder="Nome" id="nome" name="nome" required><br>
+            <!--Caixa de seleção SETOR do funcionário-->
+            <select id="setor" name="setor" required>
+                <option value="" disabled selected>Selecione o setor</option>
+                <option value="Setor 0">Setor 0</option>
+                <option value="Setor 1">Setor 1</option>
+                <option value="Setor 2">Setor 2</option>
+                <option value="Setor 3">Setor 3</option>
+                <option value="Setor 4">Setor 4</option>
+            </select><br>
+            <!--Caixa de seleção TURNO do funcionário-->
+            <select id="turno" aria-placeholder="Selecione o turno" name="turno" required>
+                <option value="" disabled selected>Selecione o turno</option>
+                <option value="Manhã">Manhã</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noite">Noite</option>
+            </select><br>
+            <!--botão cadastrar funcionário-->
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
 
-<div class="h2-container">
-    <h2>
-        <p>Último Cadastro</p>
-    </h2>
-    <p>Matrícula: {{ ultima_matricula }}</p>
-    <p>Nome: {{ ultimo_nome }}</p>
-</div>
+    <br>
+
+    <div class="h2-container">
+        <h2>
+            <p>Último Cadastro</p>
+        </h2>
+        <p>Matrícula: {{ ultima_matricula }}</p>
+        <p>Nome: {{ ultimo_nome }}</p>
+    </div>
+
+</body>
 
 </html>

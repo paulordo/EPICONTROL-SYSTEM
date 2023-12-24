@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #7c7c7c;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -17,10 +17,12 @@ body {
 
 h1 {
     text-align: center;
-    color: #333333;
+    color: #111111;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: underline;
     font-size: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 a {
@@ -70,17 +72,45 @@ input, select {
     border-radius: 4px;
 }
 
+
 input[type="submit"] {
-    background-color:#005c86;
-    color: #fff;
+    background: linear-gradient(to bottom, #3498db, #2980b9); 
+    color: #fff; 
     cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif    ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    border: none; 
+    border-radius: 10px; 
+    padding: 15px 30px; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
 }
+
+input[type="submit"]:hover {
+    background: linear-gradient(to bottom, #019421, #34db58); 
+    transform: scale(1.05); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); 
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+input[type="submit"]:hover {
+    animation: pulse 0.5s ease-in-out; 
+
+}
+
 
 .last-registration {
     background-color: #f0f0f0;
     padding: 15px;
-   border-radius: 4px;
+    border-radius: 4px;
 }
 
 h2 {
@@ -100,23 +130,57 @@ h2 {
 }
 
 .error_message {
-    color: red;
-    margin-bottom: 10px;
-}
-.botao_voltar {
-    text-decoration: none;
+    color: #b52b27; /* Vermelho escuro */
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    border: 1px solid #f5c6cb; /* Borda vermelha mais clara */
+    padding: 15px; /* Espaçamento interno maior */
+    border-radius: 5px; /* Borda arredondada */
+    margin-bottom: 20px; /* Margem inferior maior */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Peso da fonte em negrito */
 }
 
+.error_message strong {
+    font-weight: bold; /* Reforça a intensidade do texto em negrito */
+}
+
+.error_message::before {
+    content: "\26A0"; /* Símbolo de aviso/exclamação */
+    margin-right: 5px;
+}
+
+/* Adiciona animação de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.error_message {
+    animation: fadeIn 0.5s ease;
+}
+
+
+
 .botao_voltar button {
-    background-color: #0075e2;
-    color: white; 
-    padding: 8px 16px; 
-    font-size: 14px; 
-    border: none; 
+    background-color: #005c86;
+    color: #fff;
     cursor: pointer;
-    border-radius: 3px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    border: black;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .botao_voltar button:hover {
-    background-color: #2980b9; 
+    background-color: #2980b9;
+}
+
+.botao_voltar button:hover::before {
+    content: "\2190"; /* código unicode para a seta para a esquerda */
+    margin-right: 5px; /* ajuste o espaçamento conforme necessário */
 }

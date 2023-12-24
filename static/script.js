@@ -43,18 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/exibir_funcionarios';
     });
 
-    // Adicione um ouvinte de evento para o botão "Cadastrar Funcionário"
+    // Evento de clique para o botão "Cadastrar Funcionário"
     document.getElementById('cadastrarFuncionario').addEventListener('click', function () {
         openCadastrarFuncionarioPage();
     });
-
-    ocultarConteudo();
 });
-    function openCadastrarFuncionarioPage() {
-        fetch('/cadastrar-funcionario')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('content').innerHTML = data;
-            })
-            .catch(error => console.error('Erro:', error));
-    }
