@@ -74,6 +74,20 @@
                 dropdownTamanhoContainer.style.display = 'none';
             }
         });
+                document.addEventListener('DOMContentLoaded', function () {
+            var matriculaInput = document.getElementById('matricula');
+            var searchParams = new URLSearchParams(window.location.search);
+            var matricula = searchParams.get('matricula');
+
+            if (matricula) {
+                // Se a matrícula foi passada, preenche e torna o campo não editável
+                matriculaInput.value = matricula;
+                matriculaInput.readOnly = true;
+            } else {
+                // Se não houver matrícula, mantém o campo visível e editável
+                matriculaInput.readOnly = false;
+            }
+        });
     </script>
 </body>
 </html>

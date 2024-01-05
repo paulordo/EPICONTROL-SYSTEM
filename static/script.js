@@ -47,4 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('cadastrarFuncionario').addEventListener('click', function () {
         openCadastrarFuncionarioPage();
     });
+    function getMatriculaFromURL() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.get('matricula');
+    }
+    const matriculaDoFuncionario = getMatriculaFromURL();
+    console.log(matriculaDoFuncionario);
 });

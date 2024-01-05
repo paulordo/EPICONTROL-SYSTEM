@@ -16,7 +16,8 @@ body {
     flex-wrap: wrap;
     max-width: 250px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px; /* Adiciona algum preenchimento ao formulário */
+    padding: 20px;
+    text-align: center;
 }
 
 h1 {
@@ -33,7 +34,7 @@ h1 {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    padding: 20px; /* Adiciona algum preenchimento ao conteúdo */
+    padding: 20px; 
 }
 
 #content p {
@@ -48,6 +49,7 @@ h1 {
 
 #menu {
     margin-top: 20px;
+    background-color: #bbbbbb;
 }
 
 #menu h2 {

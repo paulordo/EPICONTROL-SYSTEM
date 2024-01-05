@@ -31,7 +31,7 @@
                                     {% endif %}
                                     <!-- Botão de exclusão de histórico para cada item do histórico -->
                                     <a href="{{ url_for('excluir_historico', matricula=funcionario['Matrícula'], epi=historico['EPI'], data=historico['Data']) }}">
-                                        <button type="button" class="botao-excluir">Excluir EPI</button>
+                                        <button type="button" class="botao_excluir">Excluir EPI</button>
                                     </a>
                                 </li>
                             {% endfor %}
@@ -39,13 +39,28 @@
                     {% endif %}
                     <!-- Botão de exclusão para cada funcionário -->
                     <a href="{{ url_for('excluir_funcionario', matricula=funcionario['Matrícula']) }}">
-                        <button type="button" class="botao-excluir">Excluir Funcionário</button>
-                    </a>
+                        <button type="button" class="botao_excluir">Excluir Funcionário</button>
+                    <a href="#" data-matricula="{{ funcionario['Matrícula'] }}" class="botao_requisitar">Requisitar EPI</a>
                 </li>
             {% endfor %}
         </ul>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Adiciona um ouvinte de evento para os botões "Requisitar EPI"
+        var botoesRequisitarEPI = document.querySelectorAll('.botao_requisitar');
+        botoesRequisitarEPI.forEach(function (botao) {
+            botao.addEventListener('click', function () {
+                var matricula = botao.getAttribute('data-matricula');
+                openRequisitarEPIPage(matricula);
+            });
+        });
+
+        // Função para abrir a página de requisitar EPI
+        function openRequisitarEPIPage(matricula) {
+            window.location.href = `/requisitar_epi.html?matricula=${matricula}`;
+        }
+    </script>
 </body>
 
 </html>
